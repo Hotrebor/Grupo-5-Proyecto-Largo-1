@@ -20,9 +20,9 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Aritmetica #(parameter N = 25 /* Valor de N*/)(
 	input wire [N-1:0] Constantes_G,Multip_G,Entrada_G,
-	output wire [N-1:0] Valores
+	output wire [2*N-1:0] Valores
 	);
-wire [2*N-1:0] Ext_Sign,Res_Sum;	
+wire [2*N-1:0] Ext_Sign;	
 
 		
 Concatenador instance_Concatenador (
@@ -34,12 +34,9 @@ Sumador instance_Sum_Mul (
     .Sum_ext(Ext_Sign), 
     .Multiplicandos(Multip_G), 
     .Constantes(Constantes_G), 
-    .Suma_G(Res_Sum)
+    .Suma_G(valores)
     );
 
-Truncamiento instance_Trucamiento(
-    .Datos_Sum(Res_Sum), 
-    .Datos_Trunc(Valores)
-    );
+
 
 endmodule

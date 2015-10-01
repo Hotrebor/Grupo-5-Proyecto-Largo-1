@@ -18,10 +18,10 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Mux_Fk(fk,fk_1,fk_2,sel,out);
-	input [24:0] fk, fk_1, fk_2;
+module Mux_Fk #(parameter N = 25 /* Valor de N*/)(fk,fk_1,fk_2,sel,out);
+	input [N-1:0] fk, fk_1, fk_2;
 	input [1:0] sel;
-	output reg [24:0] out;
+	output reg [N-1:0] out;
 	always @(fk or fk_1 or fk_2 or sel)
 		case (sel)
 			2'b00: out=fk;

@@ -27,7 +27,7 @@ module Control_filtro(clk,bandera,Sel_cons,Sel_fk,Sel_ac,listo
 	 output wire [1:0] Sel_fk;
 	 output wire Sel_ac,listo;
 	 // variables
-	 reg [2:0] Sel_c,est_sig,est_act;;
+	 reg [2:0] Sel_c,est_sig,est_act;
 	 reg [1:0] Sel_f;
 	 reg Sel_a,ready;	
 	 

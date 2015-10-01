@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date:    21:08:03 09/30/2015 
+// Create Date:    22:03:54 09/30/2015 
 // Design Name: 
-// Module Name:    Mux_Ac 
+// Module Name:    Desplazamiento_fk 
 // Project Name: 
 // Target Devices: 
 // Tool versions: 
@@ -18,15 +18,24 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Mux_Ac #(parameter N = 25 /* Valor de N*/)(uk,acum,sel,out);
-	input [N-1:0] uk,acum;
-	input sel;
-	output reg [N-1:0] out;
-	always @(uk or acum or sel)
-		case (sel)
-			0: out=uk;
-			1: out=acum;
-			default: out=0;
-		endcase
+module Desplazamiento_fk #(parameter N = 25)(
+ input wire[2*N-1:0] In,
+ input wire shift,
+ output wire[2*N-1:0] fk,fk_1,fk_2
+    );  
+
+//Variables
+reg [2*N-1:0] fk_old1,fk_old2,fk_ac;
+
+always@(posedge shift)
+begin
+fk_old1 = fk;
+fk_old2 = fk_1;
+fk_ac = In; 
+end
+
+assign fk = fk_ac;
+assign fk_1 = fk_old1;
+assign fk_2 = fk_old2;
 
 endmodule
