@@ -18,10 +18,10 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Mux_Constantes(sel,out
+module Mux_Constantes #(parameter N = 25 /* Valor de N*/)(sel,out
     );
 input [2:0] sel;
-output reg [25:0] out; 
+output reg [N-1:0] out; 
 /*200hz
 a1=25'b1111000001010001111010111; //-1.96
 a2=25'b0000011110101111000110101; //0.9605
