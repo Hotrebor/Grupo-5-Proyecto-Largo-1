@@ -2,7 +2,7 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 // Company: 
-// Engineer:Roberto Chaves García
+// Engineer: Roberto Chaves García
 //
 // Create Date:   19:47:41 09/24/2015
 // Design Name:   Truncamiento
@@ -22,7 +22,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module TB_Truncamiento #(parameter N = 24);
+module TB_Truncamiento #(parameter N = 25);
 
 	// Inputs
 	reg [47:0] Datos_Sum;

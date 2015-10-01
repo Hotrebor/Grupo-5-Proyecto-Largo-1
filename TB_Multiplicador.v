@@ -22,7 +22,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module TB_Multiplicador #(parameter N = 24);
+module TB_Multiplicador #(parameter N = 25);
 
 	// Inputs
 	reg [23:0] Multiplicandos;

@@ -22,7 +22,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module TB_Sumador #(parameter N = 24);
+module TB_Sumador #(parameter N = 25);
 
 	// Inputs
 	reg [2*N-1:0] Sum_ext;

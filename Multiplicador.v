@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Multiplicador #(parameter N = 24 /* Valor de N*/)(
+module Multiplicador #(parameter N = 25 /* Valor de N*/)(
 	input wire [N-1:0] Multiplicandos,
 	input wire [N-1:0] Constantes,
 	output reg [2*N-1:0] Multip

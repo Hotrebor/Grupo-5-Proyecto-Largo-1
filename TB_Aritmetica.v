@@ -22,7 +22,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module TB_Aritmetica #(parameter N = 24);
+module TB_Aritmetica #(parameter N = 25);
 
 	// Inputs
 	reg [23:0] Constantes_G;

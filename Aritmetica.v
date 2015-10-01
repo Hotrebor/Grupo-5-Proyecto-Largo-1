@@ -18,7 +18,7 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Aritmetica #(parameter N = 24 /* Valor de N*/)(
+module Aritmetica #(parameter N = 25 /* Valor de N*/)(
 	input wire [N-1:0] Constantes_G,Multip_G,Entrada_G,
 	output wire [N-1:0] Valores
 	);

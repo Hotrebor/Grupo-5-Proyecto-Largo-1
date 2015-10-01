@@ -22,7 +22,7 @@
 // 
 ////////////////////////////////////////////////////////////////////////////////
 
-module TB_SingExt#(parameter N = 24);
+module TB_SingExt#(parameter N = 25);
 
 	// Inputs
 	reg [23:0] ValorSuma;

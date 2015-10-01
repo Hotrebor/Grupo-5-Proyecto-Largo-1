@@ -18,16 +18,16 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Truncamiento #(parameter N = 24 /* Valor de N*/)(
+module Truncamiento #(parameter N = 25 /* Valor de N*/)(
 	input wire [2*N-1:0] Datos_Sum,
 	output reg [N-1:0] Datos_Trunc
    );
 	
 	parameter 			//Parte de magnitud salida
 	MA = 4,
-	MB = 5,
-	FA = 19,
-	FB = 19;
+	MB = 4,
+	FA = 20,
+	FB = 20;
 	
 	localparam[2*N-3:FB+FA+MB]
 	COM_A = ~0,
