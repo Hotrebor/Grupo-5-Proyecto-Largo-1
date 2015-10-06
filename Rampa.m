@@ -10,7 +10,7 @@ data_out = fopen('rampa.txt', 'w' );
 
 data = limdown:.1:limup;
 
-for i=1:((-limdown+limup)/0.1)
+for i=1:((-limdown+limup)/(0.1))
     fprintf(data_out,'%f\n',data(i));  
 end
 

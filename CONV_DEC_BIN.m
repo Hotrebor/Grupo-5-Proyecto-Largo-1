@@ -6,7 +6,7 @@ function [] = CONV_DEC_BIN(AN,n,D,F)
 %F = 6; 'samples_dec_condicionado.txt'
 
 Muestras = fopen(AN, 'r' );
-data_out = fopen('DatosResultantes.txt', 'w' );
+data_out = fopen('BinRampa.txt', 'w' );
 
 data = fscanf(Muestras, '%f',n)';
 fclose(Muestras);

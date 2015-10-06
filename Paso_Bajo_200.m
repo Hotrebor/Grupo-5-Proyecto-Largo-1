@@ -4,8 +4,8 @@ function Salida = Paso_Bajo_200(Entrada)
 fNMenos1 = 0;
 fNMenos2 = 0;
 
-a1 = 1.96;
-a2 = -0.9605;
+a1 = -1.96;
+a2 = 0.9605;
 b0 = 0.000199;
 b1 = 0.0003979;
 b2 = 0.000199;
