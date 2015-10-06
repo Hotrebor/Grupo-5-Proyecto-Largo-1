@@ -31,12 +31,13 @@ wire [N-1:0] Const,InAcum,InMul,Trunacum,Trunfk,Trunfk_1,Trunfk_2;
 wire [2*N-1:0] ResultArim,Racum,Rfk,Rfk_1,Rfk_2;
 
 Control_filtro instance_Control (
+    .Bandera(Bandera_ADC), 
     .clk(Clk), 
-    .bandera(Bandera_ADC), 
-    .Sel_cons(SelectorConst), 
-    .Sel_fk(SelectorFk), 
-    .Sel_ac(sel_acum), 
-    .listo(Bandera_Listo)
+	 .se(signal),
+    .sel_const(SelectorConst), 
+    .sel_fun(SelectorFk), 
+    .sel_acum(sel_acum), 
+    .Band_Listo(Bandera_Listo)
     );
 
 
@@ -71,6 +72,7 @@ Aritmetica instance_Aritmetica (
 Desplazamiento_fk instance_Shift_Reg (
     .In(ResultArim), 
     .shift(~sel_acum), 
+	 .clk(Clk),
     .fk(Rfk), 
     .fk_1(Rfk_1), 
     .fk_2(Rfk_2)
@@ -79,7 +81,8 @@ Desplazamiento_fk instance_Shift_Reg (
 acumulador instance_Acumulador (
     .In(ResultArim), 
     .clk(Clk), 
-    .Acumulado(Racum)
+    .Acumulado(Racum),
+    .signal(signal)
     );
 
 

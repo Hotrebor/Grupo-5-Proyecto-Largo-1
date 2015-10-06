@@ -18,84 +18,122 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module Control_filtro(clk,bandera,Sel_cons,Sel_fk,Sel_ac,listo
-    );
-	 //entradas
-	 input clk,bandera;
-	 //salidas
-	 output wire [2:0] Sel_cons;
-	 output wire [1:0] Sel_fk;
-	 output wire Sel_ac,listo;
-	 // variables
-	 reg [2:0] Sel_c,est_sig,est_act;
-	 reg [1:0] Sel_f;
-	 reg Sel_a,ready;	
-	 
-/////////////////////////////////////////////
-	 //parte secuencial
-	 always @ (posedge clk )
-	 begin
-		est_act<=est_sig;
-	 end
-	 //parte combinacional
-	 always @(posedge bandera)
-	 begin
-		case(est_act)
-				3'b000:
-					begin
-						Sel_c=3'b0;
-						Sel_f=2'b0;
-						Sel_a=0;
-						est_sig=3'b001;
-						ready=0;
-					end
-				3'b001:
-					begin
-						Sel_c=3'b0;
-						Sel_f=2'b01;
-						Sel_a=1;
-						est_sig=3'b010;
-						ready=0;
-					end
-				3'b010:
-					begin
-						Sel_c=3'b001;
-						Sel_f=2'b10;
-						Sel_a=1;
-						est_sig=3'b011;
-						ready=0;
-					end
-				3'b011:
-					begin
-						Sel_c=3'b010;
-						Sel_f=2'b0;
-						Sel_a=1;
-						est_sig=3'b100;
-						ready=0;
-					end
-				3'b100:
-					begin
-						Sel_c=3'b011;
-						Sel_f=2'b01;
-						Sel_a=1;
-						est_sig=3'b101;
-						ready=0;
-					end
-				3'b101:
-					begin
-						Sel_c=3'b100;
-						Sel_f=2'b10;
-						Sel_a=1;
-						est_sig=3'b000;
-						ready=1;
-					end
-			endcase
-	 end
-	 assign Sel_cons=Sel_c;
-	 assign Sel_fk=Sel_f;
-	 assign Sel_ac= Sel_a;
-	 assign listo=ready;
-	 
+module Control_filtro(
+ input wire Bandera,clk,se,
+ output wire [2:0] sel_const,
+ output wire [1:0] sel_fun,
+ output wire sel_acum,Band_Listo
+ );
+
+//Varaibles
+reg [2:0] sel_c,est_sig,est_act;
+reg [1:0] sel_f;
+reg sel_a,Listo;
+integer contador;
+initial
+begin
+sel_c=0;
+est_sig=0;
+est_act=0;
+sel_f=0;
+sel_a=0;
+Listo=1;
+end
+
+//Parte Secuencial 
+
+always@(posedge clk)
+begin
+ if(Bandera)
+ begin
+ est_act <= 3'b000;
+ contador=0;
+ end
+ else 
+ begin
+ est_act <= est_sig; 
+ contador=contador+1;
+ end
+end
+
+//Parte combinacional 
+
+always@*
+begin
+if (contador <= 5)begin
+ case(est_act)
+ 3'b000:
+ begin
+ sel_c = 0;
+ sel_f = 0;
+ sel_a = 0;
+ est_sig = 3'b001;
+ Listo = 0;
+ end
+ 
+ 3'b001:
+ begin 
+ sel_c = 3'b001;
+ sel_f = 2'b01;
+ sel_a = 1;
+ est_sig = 3'b010;
+ Listo = 0;
+ end
+ 
+ 3'b010:
+ begin
+ sel_c = 3'b010;
+ sel_f = 2'b10;
+ sel_a = 1;
+ est_sig = 3'b011;
+ Listo = 0;
+ end
+ 
+ 3'b011:
+ begin
+ sel_c = 3'b011;
+ sel_f = 0;
+ sel_a = 1;
+ est_sig = 3'b100;
+ Listo = 0;
+ end
+ 
+ 3'b100:
+ begin
+ sel_c = 3'b100;
+ sel_f = 2'b01;
+ sel_a = 1;
+ est_sig = 3'b101;
+ Listo = 0;
+ end
+ 
+ 3'b101:
+ begin
+ sel_c = 3'b101;
+ sel_f = 2'b10;
+ sel_a = 1;
+ est_sig = 3'b000;
+ Listo = 1;
+ end
+ default:
+ begin
+ sel_c = 0;
+ sel_f = 0;
+ sel_a = 0;
+ est_sig = 3'b000;
+ Listo = 0;
+ end
+ endcase 
+ end
+ else begin
+ est_sig = 3'b000;
+ end
+end
 
 
+
+assign sel_const = sel_c;
+assign sel_fun = sel_f;
+assign sel_acum = sel_a;
+assign Band_Listo = Listo;
 endmodule
