@@ -1,4 +1,4 @@
-function [] = Rampa(limup,limdown)
+function [] = Rampa(limdat,ini)
 %UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 
@@ -7,11 +7,11 @@ function [] = Rampa(limup,limdown)
 
 
 data_out = fopen('rampa.txt', 'w' );
+T= 0:(1/44100) :(1/44100)*limdat;
+fun= T*2+ini;
 
-data = limdown:.1:limup;
-
-for i=1:((-limdown+limup)/(0.1))
-    fprintf(data_out,'%f\n',data(i));  
+for i=1:limdat
+    fprintf(data_out,'%s\n',bin(fi(fun(i), 1, 25,19)));
 end
 
 
