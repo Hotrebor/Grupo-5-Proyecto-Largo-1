@@ -20,12 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 module Mux_Ac #(parameter N = 25 /* Valor de N*/)(uk,acum,sel,out);
 	input [N-1:0] uk,acum;
-	input sel;
+	input [1:0] sel;
 	output reg [N-1:0] out;
 	always @(uk or acum or sel)
 		case (sel)
-			0: out=uk;
-			1: out=acum;
+			2'd0: out=0;
+			2'd1: out=uk;
+			2'd2: out=acum;
 			default: out=0;
 		endcase
 
