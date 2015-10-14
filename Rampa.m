@@ -8,10 +8,10 @@ function [] = Rampa(limdat,ini)
 
 data_out = fopen('rampa.txt', 'w' );
 T= 0:(1/44100) :(1/44100)*limdat;
-fun= T*2+ini;
+fun= T*0.5+ini;
 
 for i=1:limdat
-    fprintf(data_out,'%s\n',bin(fi(fun(i), 1, 25,19)));
+    fprintf(data_out,'%s\n',bin(fi(fun(i), 1, 25,14)));
 end
 
 
